@@ -10,7 +10,7 @@ search_query_results_list = []
 def Search_query():
     try:
         chat_creds = input('Enter correct numeric chat ID or chat username: ')
-        search_query = input('Enter search query (press <Enter> to get all messages): ')
+        search_query = input('Enter search query: ')
         with app:
             print('\033[1;90mGetting information...\n\033[1;00m')
             for message in app.search_messages(chat_id=chat_creds, query=search_query):
