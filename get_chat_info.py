@@ -7,9 +7,12 @@ app = Client(session_name='my_session', api_id=access_creds.api_id, api_hash=acc
 
 def Chat_info():
     chat_info = input("Enter correct numeric chat ID or chat username or chat link in 't.me/joinchat/454535yrf2 format': ")
-    with app:
-        json_object = app.get_chat(chat_info)
-    print('\033[1;90mGetting information...\n\033[1;00m')
+    try:
+        with app:
+            json_object = app.get_chat(chat_info)
+        print('\033[1;90mGetting information...\n\033[1;00m')
+    except (UsernameInvalid, UsernameNotOccupied):
+        print("\033[1;91mNot correct input!\033[1;00m")
     try:
         with app:
             print('\033[1;96mtitle\033[1;00m:', json_object.title)
@@ -35,6 +38,8 @@ def Chat_info():
             print('               \033[1;96mdescription\033[1;00m:', json_object.linked_chat.description)
             print('               \033[1;96minvite link\033[1;00m:', json_object.linked_chat.invite_link)
             print('               \033[1;96mmembers count\033[1;00m:', json_object.linked_chat.members_count)
+    except UnboundLocalError:
+        pass
     except ChatAdminRequired:
         print('\033[1;93mChat Admin permissions required!\033[1;00m')
     except FloodWait:
