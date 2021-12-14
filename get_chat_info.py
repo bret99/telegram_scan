@@ -42,4 +42,4 @@ def Chat_info():
     except AttributeError:
         pass
     except (PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, IndexError):
-        print("\033[91mNot correct input!\033[00m")
+        print("\033[1;91mNot correct input!\033[1;00m")
