@@ -12,7 +12,7 @@ def User_info():
             json_object = app.get_users(user_info)
         print('\033[1;90mGetting information...\n\033[1;00m')
     except IndexError:
-        print("\033[91mNot correct input!\033[00m")
+        print("\033[1;91mNot correct input!\033[1;00m")
     try:
         print('\033[1;96mid:\033[1;00m', json_object.id)
         print('\033[1;96mis contact:\033[1;00m', json_object.is_contact)
@@ -32,6 +32,6 @@ def User_info():
     except UnboundLocalError:
         pass
     except (PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, IndexError):
-        print("\033[91mNot correct input!\033[00m")
+        print("\033[1;91mNot correct input!\033[1;00m")
     except TypeError:
         pass
