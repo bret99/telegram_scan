@@ -11,7 +11,7 @@ def Chat_info():
         with app:
             json_object = app.get_chat(chat_info)
         print('\033[1;90mGetting information...\n\033[1;00m')
-    except (UsernameInvalid, UsernameNotOccupied):
+    except (KeyError, UsernameInvalid, UsernameNotOccupied):
         print("\033[1;91mNot correct input!\033[1;00m")
     try:
         with app:
