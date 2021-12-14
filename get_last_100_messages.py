@@ -24,5 +24,5 @@ def Search_last_100_messages():
     except ChatAdminRequired:
         print('\033[1;93mChat Admin permissions required!\033[1;00m')
     except (PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, IndexError, TypeError):
-        print('\033[1;91mNot correct input!\0331;00m')        
+        print('\033[1;91mNot correct input!\033[1;00m')        
     print('\nOne can find results in \033[1;95m{}/Telegram_scan_results.txt\033[1;00m file'.format(os.getcwd()))
