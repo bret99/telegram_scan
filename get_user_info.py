@@ -11,7 +11,7 @@ def User_info():
         with app:
             json_object = app.get_users(user_info)
         print('\033[1;90mGetting information...\n\033[1;00m')
-    except (IndexError, UsernameInvalid, UsernameNotOccupied):
+    except (KeyError, IndexError, UsernameInvalid, UsernameNotOccupied):
         print("\033[1;91mNot correct input!\033[1;00m")
     try:
         print('\033[1;96mid:\033[1;00m', json_object.id)
