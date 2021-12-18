@@ -39,12 +39,12 @@ def Search_videos():
                     count = 0
                     with app:
                         while count < int(download_videos):
-                            app.download_media(videos_list[count])
+                            app.download_media(videos_list[count], file_name='{0}/videos/{1}/'.format(os.getcwd(), chat_creds))
                             count += 1
                 except TypeError:
                     print('\033[1;91mNot correct input!\033[1;00m')
                 print('One can find scan results in \033[1;95m{}/Telegram_scan_results.txt\033[1;00m file'.format(os.getcwd()))
-                print('One can find videos in \033[1;95m{}/downloads\033[1;00m directory'.format(os.getcwd()))
+                print('One can find videos in \033[1;95m{0}/videos/{1}\033[1;00m directory'.format(os.getcwd(), chat_creds))
     except ChatAdminRequired:
         print('\033[1;93mChat Admin permissions required!\033[1;00m')
     except (PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, IndexError, TypeError):
