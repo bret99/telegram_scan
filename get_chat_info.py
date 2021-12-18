@@ -2,6 +2,7 @@ from pyrogram import Client
 import access_creds
 from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, ChatAdminRequired
 from pyrogram.errors.exceptions.flood_420 import FloodWait 
+import os
 
 app = Client(session_name='my_session', api_id=access_creds.api_id, api_hash=access_creds.api_hash)
 
@@ -9,8 +10,14 @@ def Chat_info():
     chat_info = input("Enter correct numeric chat ID or chat username or chat link in 't.me/joinchat/454535yrf2 format': ")
     try:
         with app:
+            print('\033[1;90mGetting information...\033[1;00m')
+            print('\033[1;90mDownloading profile photo...\033[1;00m')
             json_object = app.get_chat(chat_info)
-        print('\033[1;90mGetting information...\n\033[1;00m')
+            chat_photo = json_object.photo.big_file_id
+            app.download_media(chat_photo, file_name='{0}/profile_photo/{1}/'.format(os.getcwd(), chat_info))
+        print('\nOne can find profile photo in \033[1;95m{0}/profile_photo/{1}\033[1;00m directory\n'.format(os.getcwd(), chat_info))
+    except AttributeError:
+        print('\033[1;93m\nProfile \033[1;96m{} \033[1;93mhas no photo.\n\033[1;00m'.format(chat_info))
     except (KeyError, UsernameInvalid, UsernameNotOccupied):
         print("\033[1;91mNot correct input!\033[1;00m")
     try:
