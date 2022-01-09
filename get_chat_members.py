@@ -48,5 +48,5 @@ def Chat_members():
         print('One can find scan results in \033[1;95m{}/Telegram_scan_results.txt\033[1;00m file'.format(os.getcwd()))
     except ChatAdminRequired:
         print('\033[1;93mChat Admin permissions required!\033[1;00m')
-    except (PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, IndexError):
-        print("\033[91mNot correct input!\033[00m")
+    except (PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, IndexError, ValueError):
+        print("\033[1;91mNot correct input!\033[1;00m")
