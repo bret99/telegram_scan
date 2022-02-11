@@ -10,14 +10,14 @@ def User_info():
     user_info = input('Enter correct numeric user ID/username/phone number: ')
     try:
         with app:
-            print('\033[1;90mGetting information...\033[1;00m')
-            print('\033[1;90mDownloading profile photo...\033[1;00m')
+            print('\n\033[1;90mGetting information...\033[1;00m')
+            print('\033[1;90mDownloading profile photo...\033[1;00m\n')
             json_object = app.get_users(user_info)
             count = app.get_profile_photos_count(user_info)
             profile_photo = app.get_profile_photos(user_info)
             item = 0
             while item < count:
-                app.download_media(profile_photo[item].file_id, file_name='{0}/profile_photo/{1}/'.format(os.getcwd(), user_info))
+                app.download_media(profile_photo[item].file_id, file_name='{0}/profile_photos/{1}/'.format(os.getcwd(), user_info))
                 item += 1
             if count == 0:
                 print('\033[1;93m\nProfile \033[1;96m{} \033[1;93mhas no photo.\n\033[1;00m'.format(user_info))

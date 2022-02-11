@@ -7,7 +7,7 @@ app = Client(session_name='my_session', api_id=access_creds.api_id, api_hash=acc
 
 def My_chats():
     with app:
-        print('\033[1;90mGetting information...\n\033[1;00m')
+        print('\n\033[1;90mGetting information...\033[1;00m')
         for dialog in app.iter_dialogs():
             my_chats_list_row = 'ID:{}'.format(dialog.chat.id), dialog.chat.first_name, dialog.chat.last_name, 'username:{}'.format(dialog.chat.username), 'title:{}'.format(dialog.chat.title)
             if dialog.chat.title is None:

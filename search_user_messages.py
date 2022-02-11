@@ -12,7 +12,7 @@ def Search_user_messages():
         chat_creds = input('Enter correct numeric chat ID or chat username: ')
         search_user = input('Enter correct numeric user ID or username: ')
         with app:
-            print('\033[1;90mGetting information...\n\033[1;00m')
+            print('\n\033[1;90mGetting information...\n\033[1;00m')
             for message in app.search_messages(chat_id=chat_creds, from_user=search_user):
                 print('\033[1;94m' + datetime.datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S')+ '\033[1;00m')
                 print(message.text)

@@ -12,7 +12,7 @@ def Search_contacts():
         chat_creds = input('Enter correct numeric chat ID or chat username: ')
         try:
             with app:
-                print('\033[1;90mGetting information...\n\033[1;00m')
+                print('\n\033[1;90mGetting information...\n\033[1;00m')
                 for message in app.search_messages(chat_id=chat_creds, filter='contact'):
                     print('\033[1;94m' + datetime.datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S') + '\033[1;00m from user ID:\033[1;94m' + str(message.from_user.id) + '\n\033[1;00m' + message.contact.phone_number + ' ' + message.contact.first_name + ' ' + message.contact.last_name)
                     contacts_list.append(datetime.datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S') + ' from user ID:' + str(message.from_user.id))

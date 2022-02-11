@@ -12,7 +12,7 @@ def Search_query():
         chat_creds = input('Enter correct numeric chat ID or chat username: ')
         search_query = input('Enter search query: ')
         with app:
-            print('\033[1;90mGetting information...\n\033[1;00m')
+            print('\n\033[1;90mGetting information...\n\033[1;00m')
             for message in app.search_messages(chat_id=chat_creds, query=search_query):
                 messages = datetime.datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S') + ' from user ID:{}'.format(message.from_user.id) + '\n' + message.text
                 message = '\033[1;94m' + datetime.datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S') + '\033[1;00m from user ID:\033[1;94m{}\033[1;00m'.format(message.from_user.id) + '\n' + message.text
@@ -30,5 +30,5 @@ def Search_query():
             output.write('CHAT (id = {0}) QUERY ({1}) => \n'.format(chat_creds, search_query))
             for row in search_query_results_list:
                 output.write(str(row) + '\n')
-        print('\033[1;91mNot correct input or smth went wrong!\033[1;00m')
+        print('\n\033[1;91mNot correct input or smth went wrong!\033[1;00m')
         print('\nOne can find scan results in \033[1;95m{}/Telegram_scan_results.txt\033[1;00m file'.format(os.getcwd()))

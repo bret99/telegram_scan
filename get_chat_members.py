@@ -12,7 +12,7 @@ def Chat_members():
     chat_members = input("Enter correct numeric chat ID or chat username: ")
     try:
         with app:
-            print('\033[1;90mGetting information...\n\033[1;00m')
+            print('\n\033[1;90mGetting information...\n\033[1;00m')
             print("\033[1;95mMembers \033[1;00m=>")
             for member in app.iter_chat_members(chat_members, filter='all'):
                 members = 'ID:{}'.format(member.user.id), member.user.first_name, member.user.last_name, 'username:{}'.format(member.user.username), 'phone number:{}'.format(member.user.phone_number)
@@ -48,5 +48,5 @@ def Chat_members():
         print('One can find scan results in \033[1;95m{}/Telegram_scan_results.txt\033[1;00m file'.format(os.getcwd()))
     except ChatAdminRequired:
         print('\033[1;93mChat Admin permissions required!\033[1;00m')
-    except (PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, IndexError, ValueError):
-        print("\033[1;91mNot correct input!\033[1;00m")
+    except (PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, IndexError):
+        print("\033[91mNot correct input!\033[00m")

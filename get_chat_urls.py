@@ -12,7 +12,7 @@ def Search_urls():
         chat_creds = input('Enter correct numeric chat ID or chat username: ')
         search_query_1 = 'http://'
         with app:
-            print('\033[1;90mGetting information...\n\033[1;00m')
+            print('\n\033[1;90mGetting information...\n\033[1;00m')
             for message in app.search_messages(chat_id=chat_creds, query=search_query_1):
                 messages = datetime.datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S') + ' from user ID:{}'.format(message.from_user.id) + '\n' + message.text
                 message = '\033[1;94m' + datetime.datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S') + '\033[1;00m from user ID:\033[1;94m{}\033[1;00m'.format(message.from_user.id) + '\n' + message.text

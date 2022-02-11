@@ -13,7 +13,7 @@ def Search_documents():
         chat_creds = input('Enter correct numeric chat ID or chat username: ')
         try:
             with app:
-                print('\033[1;90mGetting information...\n\033[1;00m')
+                print('\n\033[1;90mGetting information...\n\033[1;00m')
                 for message in app.search_messages(chat_id=chat_creds, filter='document'):
                     print('\033[1;94m', datetime.datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S') + '\033[1;00m from user ID:\033[1;94m' + str(message.from_user.id) + '\033[00m')
                     from_users_list.append(datetime.datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S') + ' from user ID:' + str(message.from_user.id))
@@ -34,17 +34,17 @@ def Search_documents():
             if download_documents == '' or download_documents == '0':
                 print('One can find scan results in \033[1;95m{}/Telegram_scan_results.txt\033[1;00m file'.format(os.getcwd()))
             else:
-                print('\033[1;90mDownloading...\033[1;00m')
+                print('\n\033[1;90mDownloading...\033[1;00m\n')
                 try:
                     count = 0
                     with app:
                         while count < int(download_documents):
                             app.download_media(documents_list[count], file_name='{0}/documents/{1}/'.format(os.getcwd(), chat_creds))
                             count += 1
-                except TypeError:
-                    print('\033[1;91mNot correct input!\033[1;00m')
+                    print('One can find documents in \033[1;95m{0}/documents/{1}\033[1;00m directory'.format(os.getcwd(), chat_creds))
+                except (TypeError, ValueError):
+                    print('\033[1;91mNot correct input!\033[1;00m\n')
                 print('One can find scan results in \033[1;95m{}/Telegram_scan_results.txt\033[1;00m file'.format(os.getcwd()))
-                print('One can find documents in \033[1;95m{0}/documents/{1}\033[1;00m directory'.format(os.getcwd(), chat_creds))
     except ChatAdminRequired:
         print('\033[1;93mChat Admin permissions required!\033[1;00m')
     except (PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, IndexError, TypeError):
