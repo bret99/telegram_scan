@@ -22,6 +22,8 @@ def Search_query():
                 output.write('CHAT (id = {0}) QUERY ({1}) => \n'.format(chat_creds, search_query))
                 for row in search_query_results_list:
                     output.write(str(row) + '\n')
+        if len(search_query_results_list) == 0:
+            print("There are no posts one can get")
         print('\nOne can find scan results in \033[1;95m{}/Telegram_scan_results.txt\033[1;00m file'.format(os.getcwd()))
     except ChatAdminRequired:
         print('\033[1;93mChat Admin permissions required!\033[1;00m')
@@ -30,5 +32,5 @@ def Search_query():
             output.write('CHAT (id = {0}) QUERY ({1}) => \n'.format(chat_creds, search_query))
             for row in search_query_results_list:
                 output.write(str(row) + '\n')
-        print('\n\033[1;91mNot correct input or smth went wrong!\033[1;00m')
+        print('\033[1;91mNot correct input or smth went wrong!\033[1;00m')
         print('\nOne can find scan results in \033[1;95m{}/Telegram_scan_results.txt\033[1;00m file'.format(os.getcwd()))
