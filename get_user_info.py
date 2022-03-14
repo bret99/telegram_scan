@@ -22,7 +22,7 @@ def User_info():
             if count == 0:
                 print('\033[1;93m\nProfile \033[1;96m{} \033[1;93mhas no photo.\n\033[1;00m'.format(user_info))
             else:
-                print('\nOne can find profile photo in \033[1;95m{0}/profile_photo/{1}\033[1;00m directory\n'.format(os.getcwd(), user_info))
+                print('\nOne can find profile photo in \033[1;95m{0}/profile_photos/{1}\033[1;00m directory\n'.format(os.getcwd(), user_info))
     except (KeyError, IndexError, UsernameInvalid, UsernameNotOccupied):
         print("\033[1;91mNot correct input!\033[1;00m")
     except FileExistsError:
