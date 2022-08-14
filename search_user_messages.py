@@ -3,6 +3,7 @@ import access_creds
 import os
 from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, ChatAdminRequired
 import datetime 
+import sys
 
 app = Client(session_name='my_session', api_id=access_creds.api_id, api_hash=access_creds.api_hash)
 search_user_messages_list = []
@@ -29,4 +30,6 @@ def Search_user_messages():
     except ChatAdminRequired:
         print('\033[1;93mChat Admin permissions required!\033[1;00m')
     except (PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, IndexError, TypeError):
-        print('\033[1;91mNot correct input!\033[1;00m')        
+        print('\033[1;91mNot correct input!\033[1;00m')
+    except KeyboardInterrupt:
+        sys.exit("\n")
