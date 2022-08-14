@@ -3,6 +3,7 @@ import access_creds
 from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, ChatAdminRequired
 from pyrogram.errors.exceptions.flood_420 import FloodWait 
 import os
+import sys
 
 app = Client(session_name='my_session', api_id=access_creds.api_id, api_hash=access_creds.api_hash)
 
@@ -55,3 +56,5 @@ def Chat_info():
         pass
     except (PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, IndexError):
         print("\033[1;91mNot correct input!\033[1;00m")
+    except KeyboardInterrupt:
+        sys.exit("\n")
