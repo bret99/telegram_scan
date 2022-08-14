@@ -3,6 +3,7 @@ import access_creds
 import os
 from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, ChatAdminRequired
 import datetime 
+import sys
 
 app = Client(session_name='my_session', api_id=access_creds.api_id, api_hash=access_creds.api_hash)
 search_query_results_list = []
@@ -34,3 +35,5 @@ def Search_query():
                 output.write(str(row) + '\n')
         print('\033[1;91mNot correct input or smth went wrong!\033[1;00m')
         print('\nOne can find scan results in \033[1;95m{}/Telegram_scan_results.txt\033[1;00m file'.format(os.getcwd()))
+    except KeyboardInterrupt:
+        sys.exit("\n")
