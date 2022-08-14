@@ -3,6 +3,7 @@ import access_creds
 import os
 from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, ChatAdminRequired
 import datetime 
+import sys
 
 app = Client(session_name='my_session', api_id=access_creds.api_id, api_hash=access_creds.api_hash)
 animations_list = []
@@ -49,3 +50,5 @@ def Search_animations():
         print('\033[1;93mChat Admin permissions required!\033[1;00m')
     except (PeerIdInvalid, UsernameInvalid, UsernameNotOccupied, IndexError, TypeError):
         print('\033[1;91mNot correct input or smth went wrong!\033[1;00m')
+    except KeyboardInterrupt:
+        sys.exit("\n")
