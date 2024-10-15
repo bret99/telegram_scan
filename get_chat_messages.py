@@ -14,7 +14,7 @@ def get_chat_messages():
         with app:
             print('\n\033[1;90mGetting information...\n\033[1;00m')
             try:
-                for message in app.get_chat_history(chat_id=chat_creds, limit=messages_amount):
+                for message in app.get_chat_history(chat_id=chat_creds, limit=int(messages_amount)):
                     print('\033[1;94m' + message.date.strftime('%Y-%m-%d %H:%M:%S')+ '\033[1;00m')
                     print(message.text)
                     chat_messages_list.append(message.date.strftime('%Y-%m-%d %H:%M:%S'))
