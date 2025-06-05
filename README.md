@@ -4,7 +4,7 @@ Fantastic and full featured framework for Telegram users and chats investigating
 Prerequisites:
 1. 
 ```
-python3 -m pip install pyrogram;
+python3 -m pip install pyrogram
 ```
 2. get api_id and api_hash at https://my.telegram.org/auth and insert the ones into access_creds.py.
 
